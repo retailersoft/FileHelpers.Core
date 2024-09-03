@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>FileHelpers.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Version>3.5.2</Version>
+    <Description>Open Source library for automatic formatted file read/write operations www.filehelpers.net</Description>
+    <Company>Devoo</Company>
+    <Product>FileHelpers http://www.filehelpers.net</Product>
+    <Copyright>Marcos Meli - Devoo</Copyright>
+    <Authors>Marcos Meli and Contributors</Authors>
+    <Owners>Marcos Meli</Owners>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>http://www.filehelpers.net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MarcosMeli/FileHelpers.git</RepositoryUrl>
+    <RepositoryBranch>master</RepositoryBranch>
+    <PackageReleaseNotes>www.filehelpers.net/changelog</PackageReleaseNotes>
+    <PackageTags>FileHelpers;Data;Flat File;CSV;FixedLength;Fixed;Delimited;Import;Export;ETL;FileHelper;.NET;.NET Core</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_")).Core</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="InternalsVisibleTo.MSBuild" Version="1.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="4.11.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <PackageReference Include="System.Data.OleDb" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="FileHelpers.Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010071634CEBD8DEBAE05841DF6D97B134B335B019F771467C700C64DE1A31EBE92784AA4EEE76C8E23D495622FFE910727BC2F24C41B7E46C61B88BF659B25034D58F685E533BC45F5CC26FB07AAAE85E86A931E97016DEA5D9D920E1C623433A45828BDAA5216F5FDE854673F26B6DEFAF7AA55706301CC94AF9B03BA3943288C5" />
+  </ItemGroup>
+</Project>
