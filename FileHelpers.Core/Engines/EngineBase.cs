@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using FileHelpers.Events;
-using FileHelpers.Options;
+using FileHelpers.Core.Events;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Abstract Base class for the engines of the library: 
     /// <see cref="FileHelperEngine"/> and 
@@ -46,7 +46,7 @@ namespace FileHelpers
             }
 
             mRecordType = recordType;
-            RecordInfo = FileHelpers.RecordInfo.Resolve(recordType);
+            RecordInfo = FileHelpers.Core.RecordInfo.Resolve(recordType);
             mEncoding = encoding;
 
             CreateRecordOptions();
@@ -112,9 +112,7 @@ namespace FileHelpers
                     res.Append(delimiter);
 
                 FieldBase field = RecordInfo.Fields[i];
-                res.Append(field.FieldCaption != null
-                    ? field.FieldCaption
-                    : field.FieldFriendlyName);
+                res.Append(field.FieldCaption ?? field.FieldFriendlyName);
             }
 
             return res.ToString();

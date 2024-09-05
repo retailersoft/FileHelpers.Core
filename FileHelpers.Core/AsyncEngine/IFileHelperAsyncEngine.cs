@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using FileHelpers.Events;
-using FileHelpers.Options;
+using FileHelpers.Core.Events;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Interface for the FileHelper Async Engine

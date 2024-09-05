@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Convert an input value to a boolean,  allows for true false values

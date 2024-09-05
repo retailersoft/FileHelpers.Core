@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.CodeAnalysis;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>
     /// Exception with error information of the run time compilation.

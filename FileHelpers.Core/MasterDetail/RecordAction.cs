@@ -1,4 +1,4 @@
-namespace FileHelpers.MasterDetail
+namespace FileHelpers.Core.MasterDetail
 {
     /// <summary>
     /// Used with the <see cref="MasterDetailSelector"/> Delegate

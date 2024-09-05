@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.Fields
+namespace FileHelpers.Core.Fields
 {
     /// <summary>
     /// extensions to help with types

@@ -2,9 +2,9 @@
 using System;
 using System.IO;
 using System.Text;
-using FileHelpers.Options;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>Used to create classes that maps to CSV records (can be quoted, multiple lines, quoted, etc).</summary>
     public sealed class CsvClassBuilder : DelimitedClassBuilder

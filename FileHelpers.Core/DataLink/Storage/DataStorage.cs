@@ -2,16 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using FileHelpers.Events;
+using FileHelpers.Core.Events;
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
     /// <summary>
     /// Base class for all the Storage classes of the library or the custom
     /// Storage classes.
     /// </summary>
+    /// <remarks>
+    /// Creates an instance DataStorage for Type
+    /// </remarks>
+    /// <param name="recordClass">Type of the record object</param>
     [Obsolete("Datalink feature is outdated and will be rewritten, see https://www.filehelpers.net/mustread/")]
-    public abstract class DataStorage
+    public abstract class DataStorage(Type recordClass)
     {
         /// <summary>Called to notify progress.</summary>
         public event EventHandler<ProgressEventArgs> Progress;
@@ -28,8 +32,8 @@ namespace FileHelpers.DataLink
             Progress(this, e);
         }
 
-        private Type mRecordType;
-        internal IRecordInfo mRecordInfo;
+        private readonly Type mRecordType = recordClass;
+        internal IRecordInfo mRecordInfo = RecordInfo.Resolve(recordClass);
 
         /// <summary>
         /// Returns the class that represent the records in the file.
@@ -104,16 +108,6 @@ namespace FileHelpers.DataLink
             };
 
             mErrorManager.AddError(e);
-        }
-
-        /// <summary>
-        /// Creates an instance DataStorage for Type
-        /// </summary>
-        /// <param name="recordClass">Type of the record object</param>
-        protected DataStorage(Type recordClass)
-        {
-            mRecordType = recordClass;
-            mRecordInfo = RecordInfo.Resolve(recordClass);
         }
 
         #region "  Values <-> Record Conversions "

@@ -2,14 +2,20 @@
 using System.ComponentModel;
 using System.Text;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// This class help to sort really big files using the External Sorting algorithm
     /// http://en.wikipedia.org/wiki/External_sorting
     /// </summary>
-    public sealed class BigFileSorter
-        : BigFileSorter<BigFileSorter.SorterRecord>
+    /// <remarks>
+    /// Create a bug file sorter
+    /// </remarks>
+    /// <param name="sorter">Comparison operator</param>
+    /// <param name="encoding">encoding of the file</param>
+    /// <param name="blockFileSizeInBytes">Block size to work on</param>
+    public sealed class BigFileSorter(Comparison<string> sorter, Encoding encoding, int blockFileSizeInBytes)
+                : BigFileSorter<BigFileSorter.SorterRecord>(CreateSorter(sorter), encoding, blockFileSizeInBytes)
     {
         /// <summary>
         /// Support record class for string sorting
@@ -70,15 +76,6 @@ namespace FileHelpers
         /// <param name="blockFileSizeInBytes">Block size to work on file</param>
         public BigFileSorter(Comparison<string> sorter, int blockFileSizeInBytes)
             : this(sorter, null, blockFileSizeInBytes) {}
-
-        /// <summary>
-        /// Create a bug file sorter
-        /// </summary>
-        /// <param name="sorter">Comparison operator</param>
-        /// <param name="encoding">encoding of the file</param>
-        /// <param name="blockFileSizeInBytes">Block size to work on</param>
-        public BigFileSorter(Comparison<string> sorter, Encoding encoding, int blockFileSizeInBytes)
-            : base(CreateSorter(sorter), encoding, blockFileSizeInBytes) {}
 
         /// <summary>
         /// Create a record sorter based on string value

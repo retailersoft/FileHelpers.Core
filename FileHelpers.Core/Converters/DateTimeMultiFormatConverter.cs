@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Text;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Convert a value to a date time value
@@ -15,13 +15,13 @@ namespace FileHelpers.Converters
         /// Convert a value to a date time value using multiple formats
         /// </summary>
         public DateTimeMultiFormatConverter(string format1, string format2)
-            : this(new[] { format1, format2 }) { }
+            : this([format1, format2]) { }
 
         /// <summary>
         /// Convert a value to a date time value using multiple formats
         /// </summary>
         public DateTimeMultiFormatConverter(string format1, string format2, string format3)
-            : this(new[] { format1, format2, format3 }) { }
+            : this([format1, format2, format3]) { }
 
         /// <summary>
         /// Convert a date time value to a string

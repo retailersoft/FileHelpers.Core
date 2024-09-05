@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Xml;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>Used to create fields that are part of a delimited record class.</summary>
     public sealed class DelimitedFieldBuilder : FieldBuilder

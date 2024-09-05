@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// This is the class that handles the errors of the engines process.
@@ -51,7 +51,7 @@ namespace FileHelpers
         /// errors of the last operation in this class.
         /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-        public ErrorInfo[] Errors => mErrorsArray.ToArray();
+        public ErrorInfo[] Errors => [.. mErrorsArray];
 
         /// <summary>
         /// Indicates the behavior of the <see cref="FileHelperEngine"/>

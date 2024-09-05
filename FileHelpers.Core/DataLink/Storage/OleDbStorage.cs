@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
 	using System.Data.OleDb;
 

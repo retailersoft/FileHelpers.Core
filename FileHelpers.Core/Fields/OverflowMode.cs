@@ -1,4 +1,4 @@
-﻿namespace FileHelpers.Enums
+﻿namespace FileHelpers.Core.Enums
 {
     /// <summary>
     /// Indicates the behavior when a data longer than a [<see cref="FixedLengthRecordAttribute"/>]

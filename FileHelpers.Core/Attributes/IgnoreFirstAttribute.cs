@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Indicates the number of lines at beginning of the file to be ignored.</summary>
     /// <remarks>

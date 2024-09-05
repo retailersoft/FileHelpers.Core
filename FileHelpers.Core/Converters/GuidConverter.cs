@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     ///  Convert a GUID to and from a field value

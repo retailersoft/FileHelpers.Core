@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Unsigned long converter

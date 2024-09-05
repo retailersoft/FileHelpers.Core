@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Xml;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>Used to build the ConverterAttribute for the run time classes.</summary>
     [EditorBrowsable(EditorBrowsableState.Never)]

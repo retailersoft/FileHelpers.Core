@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>
     /// Create attributes in the specified language and return as text to paste

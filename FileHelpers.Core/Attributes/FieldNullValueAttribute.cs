@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Indicates the value to assign to the field in the case of a NULL value.

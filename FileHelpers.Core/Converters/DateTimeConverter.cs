@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Convert a value to a date time value

@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using FileHelpers.Dynamic;
+using FileHelpers.Core.Dynamic;
 using System.IO;
 
-namespace FileHelpers.Detection
+namespace FileHelpers.Core.Detection
 {
     /// <summary>
     /// Utility class used to auto detect the record format,
@@ -160,7 +160,7 @@ namespace FileHelpers.Detection
             res.Sort(
                 delegate(RecordFormatInfo x, RecordFormatInfo y) { return -1*x.Confidence.CompareTo(y.Confidence); });
 
-            return res.ToArray();
+            return [.. res];
         }
 
         #endregion
@@ -330,7 +330,7 @@ namespace FileHelpers.Detection
 					continue;
 
 				}
-                string[] values = row.Split (new char[]{ info.Delimiter });
+                string[] values = row.Split ([info.Delimiter]);
 				if (values.Length != headerValues.Length)
 					continue;
 
@@ -352,7 +352,7 @@ namespace FileHelpers.Detection
 			}
 			
 			if (sampleData.Length >= 1) {
-                string[] firstLine = sampleData [0] [0].Split (new char[]{ info.Delimiter });
+                string[] firstLine = sampleData [0] [0].Split ([info.Delimiter]);
                 bool res = AreAllHeaders (firstLine);
 				if (res == false)
 					return false; // if has headers that starts with numbers so near sure are data and no header is present
@@ -411,8 +411,8 @@ namespace FileHelpers.Detection
                     mConfidence = (int) ((1 - info.Deviation)*100)
                 };
                 AdjustConfidence(format, info);
-                bool fileHasHeaders = false;
-				if (FileHasHeaders.HasValue)
+                bool fileHasHeaders;
+                if (FileHasHeaders.HasValue)
 					fileHasHeaders = FileHasHeaders.Value;
 				else {
 					fileHasHeaders = DetectIfContainsHeaders (info, sampleData) ;
@@ -484,7 +484,7 @@ namespace FileHelpers.Detection
             foreach (string file in files)
                 res.Add(RawReadFirstLinesArray(file, nroOfLines, mEncoding));
 
-            return res.ToArray();
+            return [.. res];
         }
 
         private static string[][] GetSampleLines(IEnumerable<TextReader> files, int nroOfLines)
@@ -494,7 +494,7 @@ namespace FileHelpers.Detection
             foreach (TextReader file in files)
                 res.Add(RawReadFirstLinesArray(file, nroOfLines));
 
-            return res.ToArray();
+            return [.. res];
         }
 
         private static int NumberOfLines(string[][] data)
@@ -527,7 +527,7 @@ namespace FileHelpers.Detection
                 }
             }
 
-            return res.ToArray();
+            return [.. res];
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace FileHelpers.Detection
                     res.Add(line);
             }
 
-            return res.ToArray();
+            return [.. res];
         }
 
         /// <summary>

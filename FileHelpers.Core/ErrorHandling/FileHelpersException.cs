@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Base class for all the library Exceptions.</summary>
     [Serializable]

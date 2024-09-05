@@ -1,4 +1,4 @@
-namespace FileHelpers.Detection
+namespace FileHelpers.Core.Detection
 {
     /// <summary>
     /// Provides a suggestion to the <see cref="SmartFormatDetector"/> 

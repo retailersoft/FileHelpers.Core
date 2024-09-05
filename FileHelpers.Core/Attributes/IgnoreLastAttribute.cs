@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// The number of lines to be ignored at the end of the file.

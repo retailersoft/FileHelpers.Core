@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
-using FileHelpers.Converters;
-using FileHelpers.Core;
-using FileHelpers.Options;
+using FileHelpers.Core.Converters;
+using FileHelpers.Core.Core;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Base class for all Field Types.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// This class help to sort really big files using the External Sorting algorithm
@@ -220,13 +220,12 @@ namespace FileHelpers
         /// <param name="sourceFile">Source file path</param>
         /// <returns></returns>
         private int BlockSizeFromFileSize(string sourceFile) {
-
-            int blockSize = DefaultBlockSize;
-
             FileInfo fi = new(sourceFile);
             long fileSize = fi.Length;
 
             int initialBlockSize = (int)(fileSize / AutoBlockSizeRatio);
+
+            int blockSize;
             if (initialBlockSize >= MinBlockSize && initialBlockSize <= MaxBufferSize)
                 blockSize = initialBlockSize;
             else if (initialBlockSize < MinBlockSize)

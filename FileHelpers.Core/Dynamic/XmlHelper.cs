@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Xml;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>
     /// XML wrapper to make life a little easier

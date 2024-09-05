@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace FileHelpers.Core
+namespace FileHelpers.Core.Core
 {
     internal static class ComparerCache
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FileHelpers.Events
+namespace FileHelpers.Core.Events
 {
     /// <summary>
     /// Base class of 

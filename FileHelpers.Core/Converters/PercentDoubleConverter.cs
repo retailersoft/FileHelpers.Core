@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// This Class is specialized version of the Double Converter

@@ -3,9 +3,9 @@ using System.Collections;
 using System.Data;
 using System.Reflection;
 using System.Text;
-using FileHelpers.Core;
+using FileHelpers.Core.Core;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Collection of operations that we perform on a type, cached for reuse

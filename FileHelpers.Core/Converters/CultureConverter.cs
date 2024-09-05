@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Convert a numeric value with separators into a value
@@ -52,7 +52,7 @@ namespace FileHelpers.Converters
         private static CultureInfo CreateCulture(string decimalSepOrCultureName)
         {
             // Array of all allowed decimal separators
-            string[] allowedDecimalSeparators = { ".", "," };
+            string[] allowedDecimalSeparators = [".", ","];
 
             CultureInfo ci;
 

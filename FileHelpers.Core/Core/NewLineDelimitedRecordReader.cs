@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Read a record that is delimited by a newline

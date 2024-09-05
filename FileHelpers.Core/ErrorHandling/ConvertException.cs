@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Indicates that a string value can't be converted to a dest type.

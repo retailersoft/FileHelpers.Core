@@ -1,4 +1,4 @@
-namespace FileHelpers.MasterDetail
+namespace FileHelpers.Core.MasterDetail
 {
 
     #region "  Delegate  "

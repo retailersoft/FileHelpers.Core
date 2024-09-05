@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Indicates the relative order of the current field.

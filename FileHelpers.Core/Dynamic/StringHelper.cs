@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>
     /// Helper classes for strings

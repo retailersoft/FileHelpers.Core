@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using FileHelpers.Engines;
-using FileHelpers.Events;
-using FileHelpers.Streams;
+using FileHelpers.Core.Engines;
+using FileHelpers.Core.Events;
+using FileHelpers.Core.Streams;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Async engine,  reads records from file in background,
@@ -273,7 +273,7 @@ namespace FileHelpers
 
             bool byPass = false;
 
-            mLastRecord = default(T);
+            mLastRecord = default;
 
             LineInfo line = new(string.Empty)
             {
@@ -352,7 +352,7 @@ namespace FileHelpers
                     {
                         if (byPass == false)
                         {
-                            currentLine = mAsyncReader.ReadNextLine();
+                            _ = mAsyncReader.ReadNextLine();
                             mLineNumber = mAsyncReader.LineNumber;
                         }
                     }
@@ -361,7 +361,7 @@ namespace FileHelpers
                 {
                     mLastRecordValues = null;
 
-                    mLastRecord = default(T);
+                    mLastRecord = default;
 
                     if (RecordInfo.IgnoreLast > 0)
                         mFooterText = mAsyncReader.RemainingText;
@@ -403,7 +403,7 @@ namespace FileHelpers
                 else
                     break;
             }
-            return arr.ToArray();
+            return [.. arr];
         }
 
         #endregion
@@ -430,7 +430,7 @@ namespace FileHelpers
                 try
                 {
                     mLastRecordValues = null;
-                    mLastRecord = default(T);
+                    mLastRecord = default;
 
                     ForwardReader reader = mAsyncReader;
                     if (reader != null)
@@ -654,7 +654,7 @@ namespace FileHelpers
             return new AsyncEnumerator(this);
         }
 
-        private class AsyncEnumerator : IEnumerator<T>
+        private class AsyncEnumerator(FileHelperAsyncEngine<T> engine) : IEnumerator<T>
         {
             T IEnumerator<T>.Current
             {
@@ -666,12 +666,7 @@ namespace FileHelpers
                 mEngine.Close();
             }
 
-            private readonly FileHelperAsyncEngine<T> mEngine;
-
-            public AsyncEnumerator(FileHelperAsyncEngine<T> engine)
-            {
-                mEngine = engine;
-            }
+            private readonly FileHelperAsyncEngine<T> mEngine = engine;
 
             public bool MoveNext()
             {

@@ -1,4 +1,4 @@
-namespace FileHelpers.Events
+namespace FileHelpers.Core.Events
 {
     /// <summary>Arguments for the <see cref="AfterReadHandler{T}"/></summary>
     public class AfterReadEventArgs

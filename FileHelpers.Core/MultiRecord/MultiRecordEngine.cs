@@ -5,12 +5,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using FileHelpers.Engines;
-using FileHelpers.Events;
-using FileHelpers.MasterDetail;
-using FileHelpers.Streams;
+using FileHelpers.Core.Engines;
+using FileHelpers.Core.Events;
+using FileHelpers.Core.MasterDetail;
+using FileHelpers.Core.Streams;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
 
     #region "  Delegate  "
@@ -84,7 +84,7 @@ namespace FileHelpers
                                                 " is already in the engine. You can't pass the same type twice to the constructor.");
                 }
 
-                mMultiRecordInfo[i] = FileHelpers.RecordInfo.Resolve(recordType);
+                mMultiRecordInfo[i] = FileHelpers.Core.RecordInfo.Resolve(recordType);
                 CreateRecordOptionsCore(mMultiRecordInfo[i]);
 
                 mRecordInfoTable.Add(recordType, mMultiRecordInfo[i]);
@@ -642,14 +642,13 @@ namespace FileHelpers
                 }
             }
         }
+
         /// <summary>
         /// Read a defined number of records from the source
         /// </summary>
         /// <param name="numberOfRecords">The count of records to read</param>
         /// <returns>An Array with all the read record objects</returns>
-#pragma warning disable CRRSP08 // A misspelled word has been found
         public object[] ReadNexts(int numberOfRecords)
-#pragma warning restore CRRSP08 // A misspelled word has been found
         {
             if (mAsyncReader == null)
                 throw new BadUsageException("Before calling ReadNext you must call BeginReadFile or BeginReadStream.");
@@ -756,9 +755,7 @@ namespace FileHelpers
         /// <see cref="BeginAppendToFile" /> method.
         /// </summary>
         /// <param name="records">The records to write (Can be an array, ArrayList, etc)</param>
-#pragma warning disable CRRSP08 // A misspelled word has been found
         public void WriteNexts(IEnumerable records)
-#pragma warning restore CRRSP08 // A misspelled word has been found
         {
             if (mAsyncWriter == null)
                 throw new BadUsageException("Before calling WriteNext you must call BeginWriteFile or BeginWriteStream.");

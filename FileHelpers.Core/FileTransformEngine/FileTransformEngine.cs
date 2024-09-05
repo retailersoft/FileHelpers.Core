@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using FileHelpers.FileTransformEngine;
-using FileHelpers.Streams;
+using FileHelpers.Core.FileTransformEngine;
+using FileHelpers.Core.Streams;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// This class allow you to convert the records of a file to a different record format.
@@ -201,7 +201,7 @@ namespace FileHelpers
                 res.Add(record.TransformTo());
             engine.Close();
 
-            return res.ToArray();
+            return [.. res];
         }
 
         #region "  Transform Internal Methods  "
@@ -231,7 +231,7 @@ namespace FileHelpers
 
             for (int i = 0; i < sourceRecords.Length; i++)
                 res.Add(sourceRecords[i].TransformTo());
-            return res.ToArray();
+            return [.. res];
         }
 
 

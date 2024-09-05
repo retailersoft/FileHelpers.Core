@@ -1,7 +1,7 @@
 using System;
-using FileHelpers.Enums;
+using FileHelpers.Core.Enums;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Indicates the length of a FixedLength field.</summary>
     /// <remarks>See the <a href="http://www.filehelpers.net/mustread">complete attributes list</a> for more information and examples of each one.</remarks>

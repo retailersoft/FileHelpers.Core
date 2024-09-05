@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Indicates the .NET Language</summary>
     public enum NetLanguage

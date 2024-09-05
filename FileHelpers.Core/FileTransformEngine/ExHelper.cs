@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.FileTransformEngine
+namespace FileHelpers.Core.FileTransformEngine
 {
     /// <summary>
     /// add validation exceptions

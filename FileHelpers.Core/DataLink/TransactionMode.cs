@@ -1,4 +1,4 @@
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
     /// <summary>
     /// Define the different Modes of Transaction that are

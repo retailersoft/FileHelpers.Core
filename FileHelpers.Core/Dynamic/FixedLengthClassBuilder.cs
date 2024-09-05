@@ -3,7 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Xml;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>Used to create classes that maps to Fixed Length records.</summary>
     public sealed class FixedLengthClassBuilder : ClassBuilder

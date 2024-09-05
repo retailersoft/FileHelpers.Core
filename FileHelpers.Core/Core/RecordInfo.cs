@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using FileHelpers.Core;
-using FileHelpers.Events;
+using FileHelpers.Core.Core;
+using FileHelpers.Core.Events;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>An internal class used to store information about the Record Type.</summary>
     internal sealed partial class RecordInfo
@@ -249,7 +249,7 @@ namespace FileHelpers
 
             CheckForOptionalAndArrayProblems(resFields);
 
-            return resFields.ToArray();
+            return [.. resFields];
         }
 
         private static int SumOrder(List<FieldBase> fields)

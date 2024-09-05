@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>An internal class used to store information about the Record Type.</summary>
     internal sealed partial class RecordInfo

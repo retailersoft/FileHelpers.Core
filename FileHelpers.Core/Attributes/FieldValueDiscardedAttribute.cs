@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Discards the values for the target field.
     /// Note: If the field <b>is not</b> on the source file you must use <see cref="FieldHiddenAttribute"/></summary>

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Set of Extension methods to be exposed to end users 

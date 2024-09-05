@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace FileHelpers.Streams
+namespace FileHelpers.Core.Streams
 {
     /// <summary>
     /// Enable reading a string as a stream

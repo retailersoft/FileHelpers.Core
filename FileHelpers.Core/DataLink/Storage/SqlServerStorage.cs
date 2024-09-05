@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using Microsoft.Data.SqlClient;  // Updated namespace for .NET Core and later versions
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
     /// <summary>
     /// This is a base class that implements the <see cref="DataStorage"/> for

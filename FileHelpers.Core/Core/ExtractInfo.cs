@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// A single field extracted from the 'record'

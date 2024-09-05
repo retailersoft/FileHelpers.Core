@@ -1,7 +1,7 @@
 
-using FileHelpers.Dynamic;
+using FileHelpers.Core.Dynamic;
 
-namespace FileHelpers.Detection
+namespace FileHelpers.Core.Detection
 {
     /// <summary>
     /// Describes the format of a record

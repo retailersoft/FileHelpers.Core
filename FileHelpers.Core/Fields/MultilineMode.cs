@@ -1,4 +1,4 @@
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Indicates the behavior of multiline fields.</summary>
     public enum MultilineMode

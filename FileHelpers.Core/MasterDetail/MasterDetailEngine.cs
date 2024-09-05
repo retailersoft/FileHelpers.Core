@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using FileHelpers.Engines;
-using FileHelpers.Events;
-using FileHelpers.Options;
+using FileHelpers.Core.Engines;
+using FileHelpers.Core.Events;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers.MasterDetail
+namespace FileHelpers.Core.MasterDetail
 {
     /// <summary>
     /// Read a master detail file, eg Orders followed by detail records
@@ -64,7 +64,7 @@ namespace FileHelpers.MasterDetail
             : base(detailType)
         {
             mMasterType = masterType;
-            mMasterInfo = FileHelpers.RecordInfo.Resolve(mMasterType);
+            mMasterInfo = FileHelpers.Core.RecordInfo.Resolve(mMasterType);
             MasterOptions = CreateRecordOptionsCore(mMasterInfo);
             mRecordSelector = recordSelector;
         }
@@ -78,7 +78,7 @@ namespace FileHelpers.MasterDetail
             : base(detailType)
         {
             mMasterType = masterType;
-            mMasterInfo = FileHelpers.RecordInfo.Resolve(mMasterType);
+            mMasterInfo = FileHelpers.Core.RecordInfo.Resolve(mMasterType);
             MasterOptions = CreateRecordOptionsCore(mMasterInfo);
 
             MasterDetailEngine<object, object>.CommonSelectorInternal sel = new(action,
@@ -117,13 +117,13 @@ namespace FileHelpers.MasterDetail
                 switch (mAction)
                 {
                     case CommonSelector.DetailIfContains:
-                        if (recordString.IndexOf(mSelector) >= 0)
+                        if (recordString.Contains(mSelector, StringComparison.CurrentCulture))
                             return RecordAction.Detail;
                         else
                             return RecordAction.Master;
 
                     case CommonSelector.MasterIfContains:
-                        if (recordString.IndexOf(mSelector) >= 0)
+                        if (recordString.Contains(mSelector, StringComparison.CurrentCulture))
                             return RecordAction.Master;
                         else
                             return RecordAction.Detail;
@@ -423,12 +423,12 @@ namespace FileHelpers.MasterDetail
             string currentLine = null;
 
             int max = maxRecords;
-            if (records is IList)
+            if (records is IList list)
             {
                 max = Math.Min(max < 0
                     ? int.MaxValue
                     : max,
-                    ((IList)records).Count);
+                    list.Count);
             }
 
             if (MustNotifyProgress) // Avoid object creation
@@ -516,7 +516,7 @@ namespace FileHelpers.MasterDetail
         /// <include file='MasterDetailEngine.docs.xml' path='doc/AppendToFile1/*'/>
         public void AppendToFile(string fileName, MasterDetails<TMaster, TDetail> record)
         {
-            AppendToFile(fileName, new MasterDetails<TMaster, TDetail>[] { record });
+            AppendToFile(fileName, [record]);
         }
 
         /// <include file='MasterDetailEngine.docs.xml' path='doc/AppendToFile2/*'/>

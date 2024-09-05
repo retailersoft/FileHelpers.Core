@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FileHelpers.Events
+namespace FileHelpers.Core.Events
 {
     /// <summary>
     /// Event args to signal engine failures

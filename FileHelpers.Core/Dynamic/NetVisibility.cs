@@ -1,4 +1,4 @@
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Indicates the visibility of a member.</summary>
     public enum NetVisibility

@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Signed byte converter (8 bit signed integer)

@@ -1,4 +1,4 @@
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Can be used both from Attributes as with the fluent configuration.

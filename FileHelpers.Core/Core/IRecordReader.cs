@@ -1,4 +1,4 @@
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Basic read record interface

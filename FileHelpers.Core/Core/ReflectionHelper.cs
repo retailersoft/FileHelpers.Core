@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Create an object and assign
@@ -73,7 +73,7 @@ namespace FileHelpers
             return recordType.GetConstructor(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic,
                 null,
                 Type.EmptyTypes,
-                new ParameterModifier[] {});
+                []);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace FileHelpers
             }
 
             BlockExpression body = Expression.Block(
-                new[] { localRecord },
+                [localRecord],
                 recordAssign,
                 Expression.Block(fieldSetters));
 

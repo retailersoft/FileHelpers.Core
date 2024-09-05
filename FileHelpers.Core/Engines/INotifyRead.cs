@@ -1,4 +1,4 @@
-﻿namespace FileHelpers.Events
+﻿namespace FileHelpers.Core.Events
 {
     /// <summary>
     /// Interface used to provide In record notification of read operations.

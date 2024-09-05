@@ -1,4 +1,4 @@
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Indicates the Conversion used in the <see cref="T:FileHelpers.FieldConverterAttribute"/>.

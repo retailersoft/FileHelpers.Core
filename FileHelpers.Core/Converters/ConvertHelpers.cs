@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Class that provides static methods that returns a default 

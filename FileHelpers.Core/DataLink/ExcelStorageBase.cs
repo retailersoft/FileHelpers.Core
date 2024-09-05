@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
     /// <summary><para>This class is a common base class for both FileHelpers.DataLink.ExcelStorage (FileHelpers.ExcelStorage.dll) and FileHelpers.DataLink.ExcelNPOIStorage (FileHelpers.ExcelNPOIStorage.dll).</para>
     /// </summary>
+    /// <remarks>Create a new ExcelStorage to work with the specified type</remarks>
+    /// <param name="recordType">The type of records.</param>
     [Obsolete("Datalink feature is outdated and will be rewritten, see https://www.filehelpers.net/mustread/")]
-    public abstract class ExcelStorageBase : DataStorage
+    public abstract class ExcelStorageBase(Type recordType) : DataStorage(recordType)
     {
         private ExcelUpdateLinksMode mUpdateLinks = ExcelUpdateLinksMode.NeverUpdate;
 
@@ -20,17 +22,6 @@ namespace FileHelpers.DataLink
         }
 
         #region "  Constructors  "
-
-        /// <summary>Create a new ExcelStorage to work with the specified type</summary>
-        /// <param name="recordType">The type of records.</param>
-        public ExcelStorageBase(Type recordType)
-            : base(recordType)
-        {
-            // Temporary
-
-            //			if (RecordHasDateFields())
-            //				throw new NotImplementedException("For now the ExcelStorage don�t work with DateTime fields, sorry for the problems.");
-        }
 
         /// <summary>Create a new ExcelStorage to work with the specified type</summary>
         /// <param name="recordType">The type of records.</param>

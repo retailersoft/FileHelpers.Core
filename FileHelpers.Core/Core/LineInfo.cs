@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using FileHelpers.Core;
+using FileHelpers.Core.Core;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Record read from the file for processing
@@ -71,11 +71,11 @@ namespace FileHelpers
         /// List of whitespace characters that we want to skip
         /// </summary>
        
-        internal static readonly char[] WhitespaceChars = new char[] {
+        internal static readonly char[] WhitespaceChars = [
             '\t', '\n', '\v', '\f', '\r', ' ', '\x00a0', '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005',
             '\u2006', '\u2007', '\u2008',
             '\u2009', '\u200a', '\u200b', '\u3000', '\ufeff'
-        };
+        ];
 
         #endregion
 

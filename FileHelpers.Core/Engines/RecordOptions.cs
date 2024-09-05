@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 
-namespace FileHelpers.Options
+namespace FileHelpers.Core.Options
 {
     using System.Collections.Generic;
 

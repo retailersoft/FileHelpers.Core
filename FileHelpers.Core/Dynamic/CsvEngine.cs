@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
-using FileHelpers.Dynamic;
-using FileHelpers.Options;
+using FileHelpers.Core.Dynamic;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>A class to read generic CSV files delimited for any char.</summary>
     [DebuggerDisplay("CsvEngine. ErrorMode: {ErrorManager.ErrorMode.ToString()}. Encoding: {Encoding.EncodingName}")]
@@ -86,9 +86,7 @@ namespace FileHelpers
         public static DataTable CsvToDataTable(string filename, CsvOptions options)
         {
             CsvEngine engine = new(options);
-#pragma warning disable 618
             return engine.ReadFileAsDT(filename);
-#pragma warning restore 618
         }
 
         /// <summary>

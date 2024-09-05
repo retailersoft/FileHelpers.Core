@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Engine used to create diff files based on the
@@ -37,7 +37,7 @@ namespace FileHelpers
             List<T> news = [];
             ApplyDiffOnlyIn1(currents, olds, news);
 
-            return news.ToArray();
+            return [.. news];
         }
 
         /// <summary>Returns the records in newFile that not are in the sourceFile</summary>
@@ -58,7 +58,7 @@ namespace FileHelpers
 
             ApplyDiffOnlyIn1(olds, currents, news);
 
-            return news.ToArray();
+            return [.. news];
         }
 
         private FileHelperEngine<T> CreateEngineAndClearErrors()
@@ -93,7 +93,7 @@ namespace FileHelpers
 
             ApplyDiffInBoth(currents, olds, news);
 
-            return news.ToArray();
+            return [.. news];
         }
 
         #region "  ApplyDiff  "
@@ -163,7 +163,7 @@ namespace FileHelpers
 
             ApplyDiffOnlyIn1(olds, currents, news);
 
-            return news.ToArray();
+            return [.. news];
         }
 
         /// <summary>

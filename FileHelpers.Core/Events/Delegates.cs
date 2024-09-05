@@ -1,4 +1,4 @@
-namespace FileHelpers.Events
+namespace FileHelpers.Core.Events
 {
     // ----  Read Operations  ----
     /// <summary>

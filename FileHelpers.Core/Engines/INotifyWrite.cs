@@ -1,4 +1,4 @@
-namespace FileHelpers.Events
+namespace FileHelpers.Core.Events
 {
     /// <summary>
     /// Interface used to provide <b>In record notification of write operations.</b>

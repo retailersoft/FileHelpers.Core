@@ -1,4 +1,4 @@
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Indicates the behavior when the engine classes like <see cref="FileHelperEngine"/> class found an error.</summary>
     public enum ErrorMode

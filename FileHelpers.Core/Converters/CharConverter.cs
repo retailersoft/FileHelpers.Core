@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.Converters
+namespace FileHelpers.Core.Converters
 {
     /// <summary>
     /// Allow characters to be converted to upper and lower case automatically.

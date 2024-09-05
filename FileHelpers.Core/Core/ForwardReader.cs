@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     internal sealed class ForwardReader
         : IDisposable

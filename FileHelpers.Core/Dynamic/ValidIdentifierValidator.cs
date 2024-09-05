@@ -1,4 +1,4 @@
-﻿namespace FileHelpers.Dynamic
+﻿namespace FileHelpers.Core.Dynamic
 {
     /// <summary>
     /// Validate that the identifier is valid for the language

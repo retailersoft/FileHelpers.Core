@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
 
     /// <summary>

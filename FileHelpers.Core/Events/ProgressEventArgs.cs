@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.Events
+namespace FileHelpers.Core.Events
 {
 
     /// <summary>Class used to notify the current progress position and other context info.</summary>

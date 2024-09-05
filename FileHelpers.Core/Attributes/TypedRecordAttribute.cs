@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Base class for the record types..</summary>
     /// <remarks>See the <a href="http://www.filehelpers.net/mustread">complete attributes list</a>

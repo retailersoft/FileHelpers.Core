@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Xml;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>Base class for the field converters</summary>
     [EditorBrowsable(EditorBrowsableState.Never)]

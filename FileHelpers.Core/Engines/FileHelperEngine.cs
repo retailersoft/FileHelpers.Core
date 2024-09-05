@@ -6,11 +6,11 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using FileHelpers.Engines;
-using FileHelpers.Events;
-using FileHelpers.Streams;
+using FileHelpers.Core.Engines;
+using FileHelpers.Core.Events;
+using FileHelpers.Core.Streams;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Basic engine to read record by record
@@ -129,7 +129,7 @@ namespace FileHelpers
             if (mObjectEngine)
                 return (T[])((ArrayList)result).ToArray(RecordInfo.RecordType);
             else
-                return ((List<T>)result).ToArray();
+                return [.. ((List<T>)result)];
         }
 
         private void ReadStream(TextReader reader, int maxRecords, DataTable dt)
@@ -442,7 +442,7 @@ namespace FileHelpers
         /// <include file='FileHelperEngine.docs.xml' path='doc/AppendToFile1/*'/>
         public void AppendToFile(string fileName, T record)
         {
-            AppendToFile(fileName, new T[] { record });
+            AppendToFile(fileName, [record]);
         }
 
         /// <include file='FileHelperEngine.docs.xml' path='doc/AppendToFile2/*'/>

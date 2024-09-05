@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.IO;
 using System.Text;
-using FileHelpers.Events;
+using FileHelpers.Core.Events;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Base for engine events

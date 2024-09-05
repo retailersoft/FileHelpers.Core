@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Base class of <see cref="FieldFixedLengthAttribute"/> and <see cref="FieldDelimiterAttribute"/></summary>
     /// <remarks>See the <a href="http://www.filehelpers.net/mustread">Complete Attributes List</a> for more information and examples of each one.</remarks>

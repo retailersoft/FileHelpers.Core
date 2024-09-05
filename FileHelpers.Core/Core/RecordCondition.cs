@@ -1,4 +1,4 @@
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>The condition used to include or exclude each record.</summary>
     public enum RecordCondition

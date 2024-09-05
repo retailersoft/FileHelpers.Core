@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace FileHelpers.MasterDetail
+namespace FileHelpers.Core.MasterDetail
 {
     /// <summary>
     /// Records are read which one is the master and the following records
@@ -54,7 +54,7 @@ namespace FileHelpers.MasterDetail
         }
 
         /// <summary>The canonical empty MasterDetail object.</summary>
-        private static readonly MasterDetails<M, D> mEmpty = new(null, new D[] {});
+        private static readonly MasterDetails<M, D> mEmpty = new(null, []);
 
         /// <summary>Returns a canonical empty MasterDetail object.</summary>
         public static MasterDetails<M, D> Empty

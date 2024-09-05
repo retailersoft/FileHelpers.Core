@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Record information,  whether it is delimited or other details

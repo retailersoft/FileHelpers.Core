@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.Text;
-using FileHelpers.Options;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// This version of the <see cref="FileHelperEngine"/> is exclusively for 

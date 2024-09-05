@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using System.Text;
-using FileHelpers.Options;
+using FileHelpers.Core.Options;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// This class only has <b>static methods</b> to work with files and
@@ -67,9 +67,7 @@ namespace FileHelpers
         public static DataTable ReadFileAsDT(Type recordClass, string fileName, int maxRecords)
         {
             FileHelperEngine engine = new(recordClass);
-#pragma warning disable 618
             return engine.ReadFileAsDT(fileName, maxRecords);
-#pragma warning restore 618
         }
 
         /// <summary>
@@ -491,15 +489,9 @@ namespace FileHelpers
             bool ascending)
         {
             FileHelperEngine engine = new(recordType);
-
-#pragma warning disable 618
             List<object> list = engine.ReadFileAsList(file1);
             list.AddRange(engine.ReadFileAsList(file2));
-#pragma warning restore 618
-
-            object[] res = list.ToArray();
-            list = null; // <- better performance (memory)
-
+            object[] res = [.. list];
             SortRecordsByField(res, field, ascending);
 
             engine.WriteFile(destFile, res);
@@ -519,15 +511,9 @@ namespace FileHelpers
         public static object[] MergeAndSortFile(Type recordType, string file1, string file2, string destFile)
         {
             FileHelperEngine engine = new(recordType);
-
-#pragma warning disable 618
             List<object> list = engine.ReadFileAsList(file1);
             list.AddRange(engine.ReadFileAsList(file2));
-#pragma warning restore 618
-
-            object[] res = list.ToArray();
-            list = null; // <- better performance (memory)
-
+            object[] res = [.. list];
             SortRecords(res);
 
             engine.WriteFile(destFile, res);
@@ -640,7 +626,7 @@ namespace FileHelpers
                     nodup.Add(arr[i]);
             }
 
-            return nodup.ToArray();
+            return [.. nodup];
         }
 
         #endregion

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// One sorted 'chunk' of an input file.

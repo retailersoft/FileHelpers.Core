@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
     /// <summary>
     /// Implements the <see cref="DataStorage"/> for Microsoft Access Files.

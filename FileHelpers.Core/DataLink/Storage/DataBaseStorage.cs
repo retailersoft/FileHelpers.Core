@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Data;
-using FileHelpers.Events;
+using FileHelpers.Core.Events;
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
 
     #region "  Delegates  "

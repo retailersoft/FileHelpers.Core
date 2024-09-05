@@ -15,7 +15,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.VisualBasic;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>The MAIN class to work with runtime defined records.</summary>
     public abstract class ClassBuilder
@@ -501,7 +501,7 @@ namespace FileHelpers.Dynamic
             if (mIgnoreEmptyLines)
                 attbs.AddAttribute("IgnoreEmptyLines()");
 
-            if (mRecordConditionInfo.Condition != FileHelpers.RecordCondition.None)
+            if (mRecordConditionInfo.Condition != FileHelpers.Core.RecordCondition.None)
             {
                 attbs.AddAttribute("ConditionalRecord(RecordCondition." + mRecordConditionInfo.Condition.ToString() +
                                    ", \"" + mRecordConditionInfo.Selector + "\")");
@@ -966,7 +966,7 @@ namespace FileHelpers.Dynamic
         {
             internal RecordConditionInfo() { }
 
-            private RecordCondition mRecordCondition = FileHelpers.RecordCondition.None;
+            private RecordCondition mRecordCondition = FileHelpers.Core.RecordCondition.None;
 
             /// <summary>Allow to tell the engine what records must be included or excluded while reading.</summary>
             public RecordCondition Condition

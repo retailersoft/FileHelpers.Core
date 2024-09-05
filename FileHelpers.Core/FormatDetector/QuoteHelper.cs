@@ -1,4 +1,4 @@
-﻿namespace FileHelpers.Detection
+﻿namespace FileHelpers.Core.Detection
 {
     /// <summary>
     /// Find the number of delimiters in a class

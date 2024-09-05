@@ -1,9 +1,9 @@
 using System;
 using System.Text;
-using FileHelpers.Converters;
-using FileHelpers.Dynamic;
+using FileHelpers.Core.Converters;
+using FileHelpers.Core.Dynamic;
 
-namespace FileHelpers.Options
+namespace FileHelpers.Core.Options
 {
     /// <summary>Class used to pass information to the <see cref="FileHelpers.Dynamic.CsvClassBuilder"/> and the <see cref="CsvEngine"/></summary>
     public sealed class CsvOptions

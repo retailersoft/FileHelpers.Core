@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace FileHelpers.Options
+namespace FileHelpers.Core.Options
 {
     /// <summary>
     /// This class allows you to set some options of the fixed length records

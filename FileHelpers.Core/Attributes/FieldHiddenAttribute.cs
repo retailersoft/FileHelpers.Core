@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Hides the field to the library, the library does not use the
     /// target field at all. Nor for read and write

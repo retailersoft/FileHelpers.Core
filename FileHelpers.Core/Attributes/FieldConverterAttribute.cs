@@ -1,8 +1,8 @@
 using System;
 using System.Reflection;
-using FileHelpers.Converters;
+using FileHelpers.Core.Converters;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>Indicates the <see cref="ConverterKind"/> used for read/write operations.</summary>
     /// <remarks>See the <a href="http://www.filehelpers.net/mustread">Complete attributes list</a> for more information and examples of each one.</remarks>
@@ -15,20 +15,20 @@ namespace FileHelpers
         /// <summary>Indicates the <see cref="ConverterKind"/> used for read/write operations. </summary>
         /// <param name="converter">The <see cref="ConverterKind"/> used for the transformations.</param>
         public FieldConverterAttribute(ConverterKind converter)
-            : this(converter, new string[] {}) {}
+            : this(converter, []) {}
 
         /// <summary>Indicates the <see cref="ConverterKind"/> used for read/write operations. </summary>
         /// <param name="converter">The <see cref="ConverterKind"/> used for the transformations.</param>
         /// <param name="arg1">The first param passed directly to the Converter Constructor.</param>
         public FieldConverterAttribute(ConverterKind converter, string arg1)
-            : this(converter, new string[] {arg1}) {}
+            : this(converter, [arg1]) {}
 
         /// <summary>Indicates the <see cref="ConverterKind"/> used for read/write operations. </summary>
         /// <param name="converter">The <see cref="ConverterKind"/> used for the transformations.</param>
         /// <param name="arg1">The first param passed directly to the Converter Constructor.</param>
         /// <param name="arg2">The second param passed directly to the Converter Constructor.</param>
         public FieldConverterAttribute(ConverterKind converter, string arg1, string arg2)
-            : this(converter, new string[] {arg1, arg2}) {}
+            : this(converter, [arg1, arg2]) {}
 
         /// <summary>Indicates the <see cref="ConverterKind"/> used for read/write operations. </summary>
         /// <param name="converter">The <see cref="ConverterKind"/> used for the transformations.</param>
@@ -36,7 +36,7 @@ namespace FileHelpers
         /// <param name="arg2">The second param passed directly to the Converter Constructor.</param>
         /// <param name="arg3">The third param passed directly to the Converter Constructor.</param>
         public FieldConverterAttribute(ConverterKind converter, string arg1, string arg2, string arg3)
-            : this(converter, new string[] {arg1, arg2, arg3}) {}
+            : this(converter, [arg1, arg2, arg3]) {}
 
 
         /// <summary>
@@ -81,14 +81,14 @@ namespace FileHelpers
         /// <param name="customConverter">The Type of your custom converter.</param>
         /// <param name="arg1">The first param passed directly to the Converter Constructor.</param>
         public FieldConverterAttribute(Type customConverter, string arg1)
-            : this(customConverter, new string[] {arg1}) {}
+            : this(customConverter, [arg1]) {}
 
         /// <summary>Indicates a custom <see cref="ConverterBase"/> implementation.</summary>
         /// <param name="customConverter">The Type of your custom converter.</param>
         /// <param name="arg1">The first param passed directly to the Converter Constructor.</param>
         /// <param name="arg2">The second param passed directly to the Converter Constructor.</param>
         public FieldConverterAttribute(Type customConverter, string arg1, string arg2)
-            : this(customConverter, new string[] {arg1, arg2}) {}
+            : this(customConverter, [arg1, arg2]) {}
 
         /// <summary>Indicates a custom <see cref="ConverterBase"/> implementation.</summary>
         /// <param name="customConverter">The Type of your custom converter.</param>
@@ -96,7 +96,7 @@ namespace FileHelpers
         /// <param name="arg2">The second param passed directly to the Converter Constructor.</param>
         /// <param name="arg3">The third param passed directly to the Converter Constructor.</param>
         public FieldConverterAttribute(Type customConverter, string arg1, string arg2, string arg3)
-            : this(customConverter, new string[] {arg1, arg2, arg3}) {}
+            : this(customConverter, [arg1, arg2, arg3]) {}
 
         /// <summary>Indicates a custom <see cref="ConverterBase"/> implementation.</summary>
         /// <param name="customConverter">The Type of your custom converter.</param>
@@ -110,7 +110,7 @@ namespace FileHelpers
         /// <param name="customConverter">The Type of your custom converter.</param>
         public FieldConverterAttribute(Type customConverter)
         {
-            CreateConverter(customConverter, new object[] {});
+            CreateConverter(customConverter, []);
         }
 
         #endregion

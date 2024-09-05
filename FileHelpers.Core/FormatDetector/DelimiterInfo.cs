@@ -1,6 +1,6 @@
 using System;
 
-namespace FileHelpers.Detection
+namespace FileHelpers.Core.Detection
 {
     /// <summary>
     /// Collect statistic for the different delimitters

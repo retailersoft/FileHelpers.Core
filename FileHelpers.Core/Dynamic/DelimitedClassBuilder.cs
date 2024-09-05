@@ -3,7 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Xml;
 
-namespace FileHelpers.Dynamic
+namespace FileHelpers.Core.Dynamic
 {
     /// <summary>Used to create classes that maps to Delimited records.</summary>
     public class DelimitedClassBuilder : ClassBuilder

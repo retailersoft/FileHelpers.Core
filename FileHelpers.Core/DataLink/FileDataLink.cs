@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace FileHelpers.DataLink
+namespace FileHelpers.Core.DataLink
 {
     /// <summary>
     /// This class has the responsibility to enable the two directional

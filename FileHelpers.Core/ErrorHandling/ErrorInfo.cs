@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace FileHelpers
+namespace FileHelpers.Core
 {
     /// <summary>
     /// Contains error information of the <see cref="FileHelperEngine"/> class.
