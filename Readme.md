@@ -6,9 +6,6 @@ Upgraded from source www.filehelpers.net
 
 ### Upgraded to .NET Core 8
 
-All code is upgraded to .NET Core 8.
-Filehelpers version 3.3.0 introduced support for **.NET Standard 2.0**.  This version upgardes all components, patriclarly **Dynamic** and **SmartFormatDetector**
-
 All components of the FileHelpers dll are now uograded to .NET Core 8 in this FileHelpers.Core NuGet package.
 
 The FileHelpers.Core dll contains:
@@ -19,8 +16,8 @@ The FileHelpers.Core dll contains:
 * Events
 * ErrorManager
 * Sorting of big file
-* Dynamic: ClassBuilder and CsvClassBuilder
-* SmartFormatDetector
+* **Dynamic: ClassBuilder and CsvClassBuilder**
+* **SmartFormatDetector**
 
 There are no plans to port the FileHelpers.ExcelNPOIStorage nor FileHelpers.ExcelStorage to .NET 
 
