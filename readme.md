@@ -1,7 +1,27 @@
 # FileHelpers.Core
 
-An upgraded version of FileHelpers
+Upgraded from source www.filehelpers.net
 
-## Usage
+  The FileHelpers.Core are a **free and easy to use** .NET Core library to read/write data from fixed length or delimited records in files, strings or streams.
 
-Use in .Net Core 8+
+### Upgraded to .NET Core 8
+
+All components of the FileHelpers dll are now uograded to .NET Core 8 in this FileHelpers.Core NuGet package.
+
+The FileHelpers.Core dll contains:
+* FileHelperEngine
+* MasterDetailEngine
+* Attributes
+* Converters
+* Events
+* ErrorManager
+* Sorting of big file
+* **Dynamic: ClassBuilder and CsvClassBuilder**
+* **SmartFormatDetector**
+
+There are no plans to port the FileHelpers.ExcelNPOIStorage nor FileHelpers.ExcelStorage to .NET 
+
+### License
+
+ The FileHelpers are released under the **MIT License**.
+ FileHelpers Library source and binaries are **completely free for commercial and non commercial 
