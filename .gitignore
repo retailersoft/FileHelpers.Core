@@ -35,3 +35,4 @@ FileHelpers.userprefs
 /FileHelpers.Examples/obj
 /FileHelpers.Examples/Release
 /_ReSharper.Caches
+FileHelpers.Core/nuget.config
