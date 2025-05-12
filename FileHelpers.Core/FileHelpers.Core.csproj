@@ -4,7 +4,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileHelpers.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <Version>9.0.0</Version>
+    <Version>9.0.4</Version>
     <Description>Open Source library for automatic formatted file read/write operations www.filehelpers.net</Description>
     <Company>Devoo</Company>
     <Product>FileHelpers http://www.filehelpers.net</Product>
@@ -25,10 +25,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="4.12.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-    <PackageReference Include="System.Data.OleDb" Version="9.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="4.13.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.4" />
   </ItemGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="FileHelpers.Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010071634CEBD8DEBAE05841DF6D97B134B335B019F771467C700C64DE1A31EBE92784AA4EEE76C8E23D495622FFE910727BC2F24C41B7E46C61B88BF659B25034D58F685E533BC45F5CC26FB07AAAE85E86A931E97016DEA5D9D920E1C623433A45828BDAA5216F5FDE854673F26B6DEFAF7AA55706301CC94AF9B03BA3943288C5" />
