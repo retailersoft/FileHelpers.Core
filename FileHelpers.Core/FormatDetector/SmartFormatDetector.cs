@@ -91,7 +91,7 @@ namespace FileHelpers.Core.Detection
         /// <returns>The possible <see cref="RecordFormatInfo"/> of the file.</returns>
         public RecordFormatInfo[] DetectFileFormat(string file)
         {
-            return DetectFileFormat(new string[] {file});
+            return DetectFileFormat(new string[] { file });
         }
 
         /// <summary>
@@ -115,9 +115,9 @@ namespace FileHelpers.Core.Detection
 
             return res;
         }
-    
 
-    /// <summary>
+
+        /// <summary>
         /// Tries to detect the possible formats of the file using the <see cref="FormatHint"/>
         /// </summary>
         /// <param name="files">The files to be used as sample data</param>
@@ -127,7 +127,8 @@ namespace FileHelpers.Core.Detection
             List<RecordFormatInfo> res = [];
             string[][] sampleData = GetSampleLines(files, MaxSampleLines);
 
-            switch (mFormatHint) {
+            switch (mFormatHint)
+            {
                 case FormatHint.Unknown:
                     CreateMixedOptions(sampleData, res);
                     break;
@@ -150,7 +151,8 @@ namespace FileHelpers.Core.Detection
                     throw new InvalidOperationException("Unsuported FormatHint value.");
             }
 
-            foreach (RecordFormatInfo option in res) {
+            foreach (RecordFormatInfo option in res)
+            {
                 DetectOptionals(option, sampleData);
                 DetectTypes(option, sampleData);
                 DetectQuoted(option, sampleData);
@@ -158,7 +160,7 @@ namespace FileHelpers.Core.Detection
 
             // Sort by confidence
             res.Sort(
-                delegate(RecordFormatInfo x, RecordFormatInfo y) { return -1*x.Confidence.CompareTo(y.Confidence); });
+                delegate (RecordFormatInfo x, RecordFormatInfo y) { return -1 * x.Confidence.CompareTo(y.Confidence); });
 
             return [.. res];
         }
@@ -194,9 +196,9 @@ namespace FileHelpers.Core.Detection
         // UNKNOWN
         private void CreateMixedOptions(string[][] data, List<RecordFormatInfo> res)
         {
-            Indicators stats = Indicators.CalculateAsFixedSize (data);
+            Indicators stats = Indicators.CalculateAsFixedSize(data);
 
-            if (stats.Deviation / stats.Avg <= FixedLengthDeviationTolerance * Math.Min (1, NumberOfLines (data) / MinSampleData))
+            if (stats.Deviation / stats.Avg <= FixedLengthDeviationTolerance * Math.Min(1, NumberOfLines(data) / MinSampleData))
                 CreateFixedLengthOptions(data, res);
 
             CreateDelimiterOptions(data, res);
@@ -210,9 +212,9 @@ namespace FileHelpers.Core.Detection
         private void CreateFixedLengthOptions(string[][] data, List<RecordFormatInfo> res)
         {
             RecordFormatInfo format = new();
-            Indicators stats = Indicators.CalculateAsFixedSize (data);
+            Indicators stats = Indicators.CalculateAsFixedSize(data);
 
-            format.mConfidence = (int)(Math.Max (0, 1 - stats.Deviation / stats.Avg) * 100);
+            format.mConfidence = (int)(Math.Max(0, 1 - stats.Deviation / stats.Avg) * 100);
 
             FixedLengthClassBuilder builder = new("AutoDetectedClass");
             CreateFixedLengthFields(data, builder);
@@ -242,14 +244,16 @@ namespace FileHelpers.Core.Detection
         {
             List<FixedColumnInfo> res = null;
 
-            foreach (string[] dataFile in data) {
+            foreach (string[] dataFile in data)
+            {
                 List<FixedColumnInfo> candidates = CreateFixedLengthCandidates(dataFile);
                 res = JoinFixedColCandidates(res, candidates);
             }
 
-            for (int i = 0; i < res.Count; i++) {
+            for (int i = 0; i < res.Count; i++)
+            {
                 FixedColumnInfo col = res[i];
-                builder.AddField("Field" + i.ToString().PadLeft(4, '0'), col.Length, typeof (string));
+                builder.AddField("Field" + i.ToString().PadLeft(4, '0'), col.Length, typeof(string));
             }
         }
 
@@ -257,25 +261,33 @@ namespace FileHelpers.Core.Detection
         {
             List<FixedColumnInfo> res = null;
 
-            foreach (string line in lines) {
+            foreach (string line in lines)
+            {
                 List<FixedColumnInfo> candidates = [];
                 int blanks = 0;
 
                 FixedColumnInfo col = null;
-                for (int i = 1; i < line.Length; i++) {
+                for (int i = 1; i < line.Length; i++)
+                {
                     if (char.IsWhiteSpace(line[i]))
                         blanks += 1;
-                    else {
-                        if (blanks > 2) {
-                            if (col == null) {
-                                col = new FixedColumnInfo {
+                    else
+                    {
+                        if (blanks > 2)
+                        {
+                            if (col == null)
+                            {
+                                col = new FixedColumnInfo
+                                {
                                     Start = 0,
                                     Length = i
                                 };
                             }
-                            else {
+                            else
+                            {
                                 FixedColumnInfo prevCol = col;
-                                col = new FixedColumnInfo {
+                                col = new FixedColumnInfo
+                                {
                                     Start = prevCol.Start + prevCol.Length
                                 };
                                 col.Length = i - col.Start;
@@ -286,15 +298,19 @@ namespace FileHelpers.Core.Detection
                     }
                 }
 
-                if (col == null) {
-                    col = new FixedColumnInfo {
+                if (col == null)
+                {
+                    col = new FixedColumnInfo
+                    {
                         Start = 0,
                         Length = line.Length
                     };
                 }
-                else {
+                else
+                {
                     FixedColumnInfo prevCol = col;
-                    col = new FixedColumnInfo {
+                    col = new FixedColumnInfo
+                    {
                         Start = prevCol.Start + prevCol.Length
                     };
                     col.Length = line.Length - col.Start;
@@ -320,79 +336,86 @@ namespace FileHelpers.Core.Detection
             return cand1;
         }
 
-		bool HeadersInData (DelimiterInfo info, string[] headerValues, string[] rows)
-		{
+        bool HeadersInData(DelimiterInfo info, string[] headerValues, string[] rows)
+        {
             int duplicate = 0;
             bool first = true;
-			foreach (string row in rows) {
-				if (first) {
-					first = false;
-					continue;
+            foreach (string row in rows)
+            {
+                if (first)
+                {
+                    first = false;
+                    continue;
 
-				}
-                string[] values = row.Split ([info.Delimiter]);
-				if (values.Length != headerValues.Length)
-					continue;
+                }
+                string[] values = row.Split([info.Delimiter]);
+                if (values.Length != headerValues.Length)
+                    continue;
 
-				for (int i = 0; i < values.Length; i++) {
-					if (values [i] == headerValues [i])
-						duplicate++;
-				}
-			}
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (values[i] == headerValues[i])
+                        duplicate++;
+                }
+            }
 
-			return duplicate >= rows.Length * 0.25;
+            return duplicate >= rows.Length * 0.25;
 
 
-		}
+        }
 
-		bool DetectIfContainsHeaders (DelimiterInfo info, string[][] sampleData)
-		{
-			if (sampleData.Length >= 2) {
-				return SameFirstLine (info, sampleData);
-			}
-			
-			if (sampleData.Length >= 1) {
-                string[] firstLine = sampleData [0] [0].Split ([info.Delimiter]);
-                bool res = AreAllHeaders (firstLine);
-				if (res == false)
-					return false; // if has headers that starts with numbers so near sure are data and no header is present
+        bool DetectIfContainsHeaders(DelimiterInfo info, string[][] sampleData)
+        {
+            if (sampleData.Length >= 2)
+            {
+                return SameFirstLine(info, sampleData);
+            }
 
-				if (HeadersInData(info, firstLine, sampleData[0]))
-					return false;
+            if (sampleData.Length >= 1)
+            {
+                string[] firstLine = sampleData[0][0].Split([info.Delimiter]);
+                bool res = AreAllHeaders(firstLine);
+                if (res == false)
+                    return false; // if has headers that starts with numbers so near sure are data and no header is present
 
-				return true;
+                if (HeadersInData(info, firstLine, sampleData[0]))
+                    return false;
 
-			}
-			return false;
-		}
+                return true;
 
-		bool SameFirstLine (DelimiterInfo info, string[][] sampleData)
-		{
-			for (int i = 1; i < sampleData.Length; i++) {
-				if (!SameHeaders (info, sampleData [0][0], sampleData [i][0]))
-					return false;
-			}
-			return true;
+            }
+            return false;
+        }
 
-		}
+        bool SameFirstLine(DelimiterInfo info, string[][] sampleData)
+        {
+            for (int i = 1; i < sampleData.Length; i++)
+            {
+                if (!SameHeaders(info, sampleData[0][0], sampleData[i][0]))
+                    return false;
+            }
+            return true;
 
-		bool SameHeaders (DelimiterInfo info, string line1, string line2)
-		{
-			return line1.Replace (info.Delimiter.ToString (), "").Trim ()
-			== line2.Replace (info.Delimiter.ToString (), "").Trim ();
-		}
+        }
 
-		bool AreAllHeaders ( string[] rowData)
-		{
-			foreach (string item in rowData) {
-                string fieldData = item.Trim ();
-				if (fieldData.Length == 0)
-					return false;
-				if (char.IsDigit (fieldData [0]))
-					return false;
-			}
-			return true;
-		}
+        bool SameHeaders(DelimiterInfo info, string line1, string line2)
+        {
+            return line1.Replace(info.Delimiter.ToString(), "").Trim()
+            == line2.Replace(info.Delimiter.ToString(), "").Trim();
+        }
+
+        bool AreAllHeaders(string[] rowData)
+        {
+            foreach (string item in rowData)
+            {
+                string fieldData = item.Trim();
+                if (fieldData.Length == 0)
+                    return false;
+                if (char.IsDigit(fieldData[0]))
+                    return false;
+            }
+            return true;
+        }
 
         // DELIMITED
 
@@ -405,26 +428,30 @@ namespace FileHelpers.Core.Detection
             else
                 delimiters.Add(GetDelimiterInfo(sampleData, delimiter));
 
-            foreach (DelimiterInfo info in delimiters) {
+            foreach (DelimiterInfo info in delimiters)
+            {
                 RecordFormatInfo format = new()
                 {
-                    mConfidence = (int) ((1 - info.Deviation)*100)
+                    mConfidence = (int)((1 - info.Deviation) * 100)
                 };
                 AdjustConfidence(format, info);
                 bool fileHasHeaders;
                 if (FileHasHeaders.HasValue)
-					fileHasHeaders = FileHasHeaders.Value;
-				else {
-					fileHasHeaders = DetectIfContainsHeaders (info, sampleData) ;
-				}
-                DelimitedClassBuilder builder = new("AutoDetectedClass", info.Delimiter.ToString()) {
-					IgnoreFirstLines = fileHasHeaders
+                    fileHasHeaders = FileHasHeaders.Value;
+                else
+                {
+                    fileHasHeaders = DetectIfContainsHeaders(info, sampleData);
+                }
+                DelimitedClassBuilder builder = new("AutoDetectedClass", info.Delimiter.ToString())
+                {
+                    IgnoreFirstLines = fileHasHeaders
                         ? 1
                         : 0
                 };
 
                 string[] firstLineSplitted = sampleData[0][0].Split(info.Delimiter);
-                for (int i = 0; i < info.Max + 1; i++) {
+                for (int i = 0; i < info.Max + 1; i++)
+                {
                     string name = "Field " + (i + 1).ToString().PadLeft(3, '0');
                     if (fileHasHeaders && i < firstLineSplitted.Length)
                         name = firstLineSplitted[i];
@@ -442,33 +469,34 @@ namespace FileHelpers.Core.Detection
 
         private void AdjustConfidence(RecordFormatInfo format, DelimiterInfo info)
         {
-            switch (info.Delimiter) {
+            switch (info.Delimiter)
+            {
                 case '"': // Avoid the quote identifier
                 case '\'': // Avoid the quote identifier
-                    format.mConfidence = (int) (format.Confidence*0.2);
+                    format.mConfidence = (int)(format.Confidence * 0.2);
                     break;
 
                 case '/': // Avoid the date delimiters and url to be selected
                 case '.': // Avoid the decimal separator to be selected
-                    format.mConfidence = (int) (format.Confidence*0.4);
+                    format.mConfidence = (int)(format.Confidence * 0.4);
                     break;
 
                 case '@': // Avoid the mails separator to be selected
                 case '&': // Avoid this is near a letter and URLS
                 case '=': // Avoid because URLS contains it
                 case ':': // Avoid because URLS contains it
-                    format.mConfidence = (int) (format.Confidence*0.6);
+                    format.mConfidence = (int)(format.Confidence * 0.6);
                     break;
 
                 case '-': // Avoid this other date separator
-                    format.mConfidence = (int) (format.Confidence*0.7);
+                    format.mConfidence = (int)(format.Confidence * 0.7);
                     break;
 
                 case ',': // Help the , ; tab | to be confident
                 case ';':
                 case '\t':
                 case '|':
-                    format.mConfidence = (int) Math.Min(100, format.Confidence*1.15);
+                    format.mConfidence = (int)Math.Min(100, format.Confidence * 1.15);
                     break;
             }
         }
@@ -476,16 +504,6 @@ namespace FileHelpers.Core.Detection
         #endregion
 
         #region "  Helper & Utility Methods  "
-
-        private string[][] GetSampleLines(IEnumerable<string> files, int nroOfLines)
-        {
-            List<string[]> res = [];
-
-            foreach (string file in files)
-                res.Add(RawReadFirstLinesArray(file, nroOfLines, mEncoding));
-
-            return [.. res];
-        }
 
         private static string[][] GetSampleLines(IEnumerable<TextReader> files, int nroOfLines)
         {
@@ -503,31 +521,6 @@ namespace FileHelpers.Core.Detection
             foreach (string[] fileData in data)
                 lines += fileData.Length;
             return lines;
-        }
-
-        /// <summary>
-        /// Shortcut method to read the first n lines of a text file as array.
-        /// </summary>
-        /// <param name="file">The file name</param>
-        /// <param name="lines">The number of lines to read.</param>
-        /// <param name="encoding">The Encoding used to read the file</param>
-        /// <returns>The first n lines of the file.</returns>
-        private static string[] RawReadFirstLinesArray(string file, int lines, Encoding encoding)
-        {
-            List<string> res = new(lines);
-            using (StreamReader reader = new(file, encoding))
-            {
-                for (int i = 0; i < lines; i++)
-                {
-                    string line = reader.ReadLine();
-                    if (line == null)
-                        break;
-                    else
-                        res.Add(line);
-                }
-            }
-
-            return [.. res];
         }
 
         /// <summary>
@@ -559,29 +552,32 @@ namespace FileHelpers.Core.Detection
         /// <returns></returns>
         private DelimiterInfo GetDelimiterInfo(string[][] data, char delimiter)
         {
-            Indicators indicators = Indicators.CalculateByDelimiter (delimiter, data, QuotedChar);
+            Indicators indicators = Indicators.CalculateByDelimiter(delimiter, data, QuotedChar);
 
-            return new DelimiterInfo (delimiter, indicators.Avg, indicators.Max, indicators.Min, indicators.Deviation);
+            return new DelimiterInfo(delimiter, indicators.Avg, indicators.Max, indicators.Min, indicators.Deviation);
         }
 
         private List<DelimiterInfo> GetDelimiters(string[][] data)
         {
             Dictionary<char, int> frequency = [];
             int lines = 0;
-            for (int i = 0; i < data.Length; i++) {
-                for (int j = 0; j < data[i].Length; j++) {
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data[i].Length; j++)
+                {
                     // Ignore Header Line (if any)
                     if (j == 0)
                         continue;
                     // ignore empty lines
                     string line = data[i][j];
-                    if (string.IsNullOrEmpty (line))
+                    if (string.IsNullOrEmpty(line))
                         continue;
 
                     // analyse line
                     lines++;
-                                        
-                    for (int ci = 0; ci < line.Length; ci++) {
+
+                    for (int ci = 0; ci < line.Length; ci++)
+                    {
                         char c = line[ci];
 
                         if (char.IsLetterOrDigit(c)
@@ -590,7 +586,8 @@ namespace FileHelpers.Core.Detection
                             continue;
 
                         int count;
-                        if (frequency.TryGetValue(c, out count)) {
+                        if (frequency.TryGetValue(c, out count))
+                        {
                             count++;
                             frequency[c] = count;
                         }
@@ -611,19 +608,19 @@ namespace FileHelpers.Core.Detection
             foreach (KeyValuePair<char, int> pair in frequency)
             {
                 if (pair.Value >= lines)
-                    delimiters.Add (pair.Key);
+                    delimiters.Add(pair.Key);
             }
 
             // calculate 
             foreach (char key in delimiters)
             {
-                Indicators indicators = Indicators.CalculateByDelimiter (key, data, QuotedChar);
+                Indicators indicators = Indicators.CalculateByDelimiter(key, data, QuotedChar);
                 // Adjust based on the number of lines
                 if (lines < MinSampleData)
-                indicators.Deviation = indicators.Deviation * Math.Min (1, ((double)lines) / MinSampleData);
+                    indicators.Deviation = indicators.Deviation * Math.Min(1, ((double)lines) / MinSampleData);
                 if (indicators.Avg > 1 &&
                     indicators.Deviation < MinDelimitedDeviation)
-                    candidates.Add (new DelimiterInfo (key, indicators.Avg, indicators.Max, indicators.Min, indicators.Deviation));
+                    candidates.Add(new DelimiterInfo(key, indicators.Avg, indicators.Max, indicators.Min, indicators.Deviation));
             }
 
             return candidates;
@@ -668,31 +665,31 @@ namespace FileHelpers.Core.Detection
             /// </summary>
             public int Lines = 0;
 
-            private static double CalculateDeviation (IList<int> values, double avg)
+            private static double CalculateDeviation(IList<int> values, double avg)
             {
                 double sum = 0;
                 for (int i = 0; i < values.Count; i++)
                 {
-                    sum += Math.Pow (values[i] - avg, 2);
+                    sum += Math.Pow(values[i] - avg, 2);
                 }
-                return Math.Sqrt (sum / values.Count);
+                return Math.Sqrt(sum / values.Count);
             }
 
-            private static int CountNumberOfDelimiters (string line, char delimiter)
+            private static int CountNumberOfDelimiters(string line, char delimiter)
             {
                 int count = 0;
                 char c;
                 for (int i = 0; i < line.Length; i++)
                 {
                     c = line[i];
-                    if (c == ' ' || char.IsLetterOrDigit (c))
+                    if (c == ' ' || char.IsLetterOrDigit(c))
                         continue;
                     count++;
                 }
                 return count;
             }
 
-            public static Indicators CalculateByDelimiter (char delimiter, string[][] data, char? quotedChar)
+            public static Indicators CalculateByDelimiter(char delimiter, string[][] data, char? quotedChar)
             {
                 Indicators res = new();
                 int totalDelimiters = 0;
@@ -703,18 +700,18 @@ namespace FileHelpers.Core.Detection
                 {
                     foreach (string line in fileData)
                     {
-                        if (string.IsNullOrEmpty (line))
+                        if (string.IsNullOrEmpty(line))
                             continue;
 
                         lines++;
 
                         int delimiterInLine = 0;
                         if (quotedChar.HasValue)
-                            delimiterInLine = QuoteHelper.CountNumberOfDelimiters (line, delimiter, quotedChar.Value);
+                            delimiterInLine = QuoteHelper.CountNumberOfDelimiters(line, delimiter, quotedChar.Value);
                         else
-                            delimiterInLine = CountNumberOfDelimiters (line, delimiter);
+                            delimiterInLine = CountNumberOfDelimiters(line, delimiter);
                         // add count for deviation analysis
-                        delimiterPerLine.Add (delimiterInLine);
+                        delimiterPerLine.Add(delimiterInLine);
 
                         if (delimiterInLine > res.Max)
                             res.Max = delimiterInLine;
@@ -729,12 +726,12 @@ namespace FileHelpers.Core.Detection
                 res.Avg = totalDelimiters / (double)lines;
 
                 // calculate deviation
-                res.Deviation = CalculateDeviation (delimiterPerLine, res.Avg);
+                res.Deviation = CalculateDeviation(delimiterPerLine, res.Avg);
 
                 return res;
             }
 
-            public static Indicators CalculateAsFixedSize (string[][] data)
+            public static Indicators CalculateAsFixedSize(string[][] data)
             {
                 Indicators res = new();
                 double sum = 0;
@@ -745,11 +742,11 @@ namespace FileHelpers.Core.Detection
                 {
                     foreach (string line in fileData)
                     {
-                        if (string.IsNullOrEmpty (line))
+                        if (string.IsNullOrEmpty(line))
                             continue;
                         lines++;
                         sum += line.Length;
-                        sizePerLine.Add (line.Length);
+                        sizePerLine.Add(line.Length);
 
                         if (line.Length > res.Max)
                             res.Max = line.Length;
@@ -761,7 +758,7 @@ namespace FileHelpers.Core.Detection
 
                 res.Avg = sum / (double)lines;
                 // calculate deviation
-                res.Deviation = CalculateDeviation (sizePerLine, res.Avg);
+                res.Deviation = CalculateDeviation(sizePerLine, res.Avg);
 
                 return res;
             }

@@ -1,9 +1,9 @@
+using Microsoft.CodeAnalysis;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -11,9 +11,7 @@ using System.Runtime.Loader;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.VisualBasic;
+//using Microsoft.CodeAnalysis.CSharp;
 
 namespace FileHelpers.Core.Dynamic
 {
@@ -114,30 +112,21 @@ namespace FileHelpers.Core.Dynamic
 
             SyntaxTree syntaxTree = lang switch
             {
-                NetLanguage.CSharp => CSharpSyntaxTree.ParseText(code.ToString()),
-                NetLanguage.VbNet => VisualBasicSyntaxTree.ParseText(code.ToString()),
+                //NetLanguage.CSharp => CSharpSyntaxTree.ParseText(code.ToString()),
                 _ => throw new ArgumentOutOfRangeException(nameof(lang), lang, null),
             };
 
-            
+
             Compilation compilation;
             switch (lang)
             {
-                case NetLanguage.CSharp:
-                    syntaxTree = CSharpSyntaxTree.ParseText(code.ToString());
-                    compilation = CSharpCompilation.Create($"{Guid.NewGuid()}.dll")
-                        .WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
-                        .AddReferences(references)
-                        .AddSyntaxTrees(syntaxTree);
-                    break;
-
-                case NetLanguage.VbNet:
-                    syntaxTree = VisualBasicSyntaxTree.ParseText(code.ToString());
-                    compilation = VisualBasicCompilation.Create($"{Guid.NewGuid()}.dll")
-                        .WithOptions(new VisualBasicCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
-                        .AddReferences(references)
-                        .AddSyntaxTrees(syntaxTree);
-                    break;
+                //case NetLanguage.CSharp:
+                //    syntaxTree = CSharpSyntaxTree.ParseText(code.ToString());
+                //    compilation = CSharpCompilation.Create($"{Guid.NewGuid()}.dll")
+                //        .WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
+                //        .AddReferences(references)
+                //        .AddSyntaxTrees(syntaxTree);
+                //    break;
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(lang), lang, null);
