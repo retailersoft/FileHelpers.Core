@@ -48,8 +48,8 @@ namespace FileHelpers.Core.Options
                     return mRecordLength;
 
                 mRecordLength = 0;
-                foreach (FixedLengthField field in mRecordInfo.Fields)
-                    mRecordLength += field.FieldLength;
+                foreach (FixedLengthField fixedField in mRecordInfo.Fields)
+                    mRecordLength += fixedField.FieldLength;
 
                 return mRecordLength;
             }

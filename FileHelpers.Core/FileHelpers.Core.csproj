@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0</TargetFrameworks>
+    <TargetFrameworks>net10.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileHelpers.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <Version>9.0.5</Version>
-    <Description>Open Source library for automatic formatted file read/write operations. This is a .NET 9 fork maintained by RetailerSoft.</Description>
+    <Version>10.0.0</Version>
+    <Description>Open Source library for automatic formatted file read/write operations. This is a .NET 10 fork maintained by RetailerSoft.</Description>
     <Company>RetailerSoft</Company>
     <Product>FileHelpers.Core</Product>
     <Copyright>Original: Marcos Meli - Devoo | Fork: RetailerSoft</Copyright>
@@ -15,8 +15,8 @@
     <PackageProjectUrl>https://github.com/retailersoft/FileHelpers.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/retailersoft/FileHelpers.Core.git</RepositoryUrl>
     <RepositoryBranch>main</RepositoryBranch>
-    <PackageReleaseNotes>.NET 9 fork with README. Original: www.filehelpers.net/changelog</PackageReleaseNotes>
-    <PackageTags>FileHelpers;Data;Flat File;CSV;FixedLength;Fixed;Delimited;Import;Export;ETL;FileHelper;.NET;.NET Core;.NET 9</PackageTags>
+    <PackageReleaseNotes>.NET 10 fork with README. Removed obsolete DataLink/Storage classes. Original: www.filehelpers.net/changelog</PackageReleaseNotes>
+    <PackageTags>FileHelpers;Data;Flat File;CSV;FixedLength;Fixed;Delimited;Import;Export;ETL;FileHelper;.NET;.NET Core;.NET 10</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     
@@ -30,8 +30,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
-    <PackageReference Include="System.Data.OleDb" Version="9.0.8" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="5.0.0" />
   </ItemGroup>
 </Project>
