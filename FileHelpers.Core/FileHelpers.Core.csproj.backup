@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net9.0</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>FileHelpers.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Version>9.0.4</Version>
+    <Description>Open Source library for automatic formatted file read/write operations www.filehelpers.net</Description>
+    <Company>Devoo</Company>
+    <Product>FileHelpers http://www.filehelpers.net</Product>
+    <Copyright>Marcos Meli - Devoo</Copyright>
+    <Authors>Marcos Meli and Contributors</Authors>
+    <Owners>Marcos Meli</Owners>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>http://www.filehelpers.net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MarcosMeli/FileHelpers.git</RepositoryUrl>
+    <RepositoryBranch>master</RepositoryBranch>
+    <PackageReleaseNotes>www.filehelpers.net/changelog</PackageReleaseNotes>
+    <PackageTags>FileHelpers;Data;Flat File;CSV;FixedLength;Fixed;Delimited;Import;Export;ETL;FileHelper;.NET;.NET Core</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.8" />
+  </ItemGroup>
+</Project>

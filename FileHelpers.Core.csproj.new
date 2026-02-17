@@ -4,30 +4,28 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileHelpers.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <Version>9.0.5</Version>
-    <Description>Open Source library for automatic formatted file read/write operations. This is a .NET 9 fork maintained by RetailerSoft.</Description>
+    
+    <!-- Updated for RetailerSoft fork -->
+    <PackageId>RetailerSoft.FileHelpers.Core</PackageId>
+    <Version>9.0.4</Version>
+    <Description>FileHelpers.Core fork for .NET 9 - Open Source library for automatic formatted file read/write operations. Fork maintained by RetailerSoft.</Description>
     <Company>RetailerSoft</Company>
-    <Product>FileHelpers.Core</Product>
+    <Product>FileHelpers.Core (RetailerSoft Fork)</Product>
     <Copyright>Original: Marcos Meli - Devoo | Fork: RetailerSoft</Copyright>
     <Authors>Marcos Meli, Contributors, and RetailerSoft</Authors>
     <Owners>RetailerSoft</Owners>
+    
+    <!-- License and URLs -->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/retailersoft/FileHelpers.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/retailersoft/FileHelpers.Core.git</RepositoryUrl>
     <RepositoryBranch>main</RepositoryBranch>
-    <PackageReleaseNotes>.NET 9 fork with README. Original: www.filehelpers.net/changelog</PackageReleaseNotes>
-    <PackageTags>FileHelpers;Data;Flat File;CSV;FixedLength;Fixed;Delimited;Import;Export;ETL;FileHelper;.NET;.NET Core;.NET 9</PackageTags>
+    <PackageReleaseNotes>Fork of FileHelpers targeting .NET 9. See https://github.com/retailersoft/FileHelpers.Core for details. Original project: www.filehelpers.net/changelog</PackageReleaseNotes>
+    <PackageTags>FileHelpers;Data;Flat File;CSV;FixedLength;Fixed;Delimited;Import;Export;ETL;FileHelper;.NET;.NET Core;.NET 9;RetailerSoft</PackageTags>
+    
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
-    
-    <!-- Include README in package -->
-    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
-  
-  <!-- Include README file -->
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
